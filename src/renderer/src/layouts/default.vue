@@ -6,12 +6,12 @@
     </v-main>
     <div class="scale-control">
       <v-select
-        v-model="fontSize"
-        :items="fontSizeOptions"
-        label="选择字体大小"
+        v-model="dpi"
+        :items="dpiOptions"
+        label="选择页面 DPI"
         class="scale-select"
       ></v-select>
-      <div class="scale-label">调整字体大小</div>
+      <div class="scale-label">调整页面 DPI</div>
     </div>
   </v-app>
 </template>
@@ -19,12 +19,12 @@
 <script lang="ts" setup>
 import { ref, watch } from 'vue';
 
-const fontSizeOptions = ['75%', '100%', '125%', '150%', '175%', '200%']; // 字体大小选项
+const dpiOptions = ['75%', '100%', '125%', '150%', '175%', '200%']; // DPI 选项
 
-const fontSize = ref('100%'); // 默认值为100%
+const dpi = ref('100%'); // 默认值为100%
 
-watch(fontSize, (newFontSize) => {
-  document.documentElement.style.fontSize = newFontSize; // 动态调整根元素的字体大小
+watch(dpi, (newDpi) => {
+  document.documentElement.style.zoom = newDpi; // 动态调整根元素的缩放比例
 });
 </script>
 
